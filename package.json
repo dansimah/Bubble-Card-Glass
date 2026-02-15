@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "bubble-card-glass",
+  "name": "bubble-card",
   "version": "0.0.0",
   "scripts": {
     "dist": "webpack",

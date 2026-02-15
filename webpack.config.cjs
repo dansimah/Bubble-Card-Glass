@@ -22,7 +22,7 @@ module.exports = [
     ],
     mode: 'production',
     entry: {
-      'bubble-card-glass': './src/bubble-card.js',
+      'bubble-card': './src/bubble-card.js',
       'bubble-pop-up-fix': './src/bubble-pop-up-fix.js'
     },
     module: {
@@ -40,7 +40,7 @@ module.exports = [
   {
     mode: 'development',
     entry: {
-      'bubble-card-glass': './src/bubble-card.js',
+      'bubble-card': './src/bubble-card.js',
       'bubble-pop-up-fix': './src/bubble-pop-up-fix.js'
     },
     module: {
