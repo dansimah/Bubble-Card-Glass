@@ -79,7 +79,7 @@ export function changeLight(context) {
             button.backgroundColor.style.borderColor = 'rgba(0, 0, 0, 0)';
         } else {
             button.backgroundColor.style.backgroundColor = 'rgba(0, 0, 0, 0)';
-            button.backgroundColor.style.borderColor = 'var(--primary-text-color)';
+            button.backgroundColor.style.borderColor = 'rgba(255, 255, 255, 0.18)';
         }
     });
 }

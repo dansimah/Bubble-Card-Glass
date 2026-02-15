@@ -48,9 +48,12 @@ export function changeCoverIcons(context) {
   const fullyClosed = isFullyClosed(stateObj);
   const isCurtains = getAttribute(context, "device_class") === "curtain";
 
+  const defaultIconOpen = isCurtains ? "mdi:curtains" : "mdi:window-shutter-open";
+  const defaultIconClose = isCurtains ? "mdi:curtains-closed" : "mdi:window-shutter";
+
   context.elements.icon.icon = fullyOpen
-    ? getIcon(context, context.config.entity, context.config.icon_open)
-    : getIcon(context, context.config.entity, context.config.icon_close);
+    ? getIcon(context, context.config.entity, context.config.icon_open || defaultIconOpen)
+    : getIcon(context, context.config.entity, context.config.icon_close || defaultIconClose);
 
   const iconUpName = context.config.icon_up || (isCurtains ? "mdi:arrow-expand-horizontal" : "mdi:arrow-up");
   const iconDownName = context.config.icon_down || (isCurtains ? "mdi:arrow-collapse-horizontal" : "mdi:arrow-down");

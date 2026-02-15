@@ -24,11 +24,10 @@ export function changeState(context) {
     const lastUpdated = state?.last_updated;
 
     const buttonType = context.config.button_type;
-    const defaultShowState = buttonType === 'state';
     const showName = context.config.show_name ?? true;
     const showIcon = context.config.show_icon ?? true;
-    const showState = context.config.show_state ?? defaultShowState;
-    const showAttribute = context.config.show_attribute ?? defaultShowState;
+    const showState = context.config.show_state ?? true;
+    const showAttribute = context.config.show_attribute ?? (buttonType === 'state');
     const showLastChanged = context.config.show_last_changed ?? false;
     const showLastUpdated = context.config.show_last_updated ?? false;
     const scrollingEffect = context.config.scrolling_effect ?? true;

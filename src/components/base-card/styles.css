@@ -53,13 +53,22 @@ ha-card {
     position: relative;
     width: 100%;
     height: 50px;
-    background-color: var(--bubble-card-type-main-background-color, var(--bubble-main-background-color, var(--background-color-2, var(--secondary-background-color))));
+    background: var(--bubble-card-type-main-background-color, var(--bubble-main-background-color,
+        linear-gradient(135deg,
+            rgba(255, 255, 255, 0.15) 0%,
+            rgba(255, 255, 255, 0.05) 40%,
+            rgba(255, 255, 255, 0.02) 60%,
+            rgba(255, 255, 255, 0.08) 100%
+        )
+    ));
     border-radius: var(--bubble-card-type-border-radius, var(--bubble-border-radius, calc(var(--row-height,56px)/2)));
     box-shadow: var(--bubble-card-type-box-shadow, var(--bubble-box-shadow, none));
     overflow: scroll;
     touch-action: auto;
-    border: var(--bubble-card-type-border, var(--bubble-border, none));
+    border: var(--bubble-card-type-border, var(--bubble-border, 1px solid rgba(255, 255, 255, 0.18)));
     box-sizing: border-box;
+    backdrop-filter: blur(12px) saturate(140%);
+    -webkit-backdrop-filter: blur(12px) saturate(140%);
 }
 
 .bubble-wrapper {
@@ -165,7 +174,7 @@ ha-card {
     min-height: 38px;
     margin: 6px;
     border-radius: var(--bubble-card-type-icon-border-radius, var(--bubble-icon-border-radius, var(--bubble-border-radius, 50%)));
-    background-color: var(--bubble-card-type-icon-background-color, var(--bubble-icon-background-color, var(--bubble-secondary-background-color, var(--card-background-color, var(--ha-card-background)))));
+    background-color: var(--bubble-card-type-icon-background-color, var(--bubble-icon-background-color, transparent));
     overflow: hidden;
     position: relative;
 }

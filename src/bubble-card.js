@@ -191,7 +191,7 @@ class BubbleCard extends HTMLElement {
   }
 
   static getConfigElement() {
-    return document.createElement("bubble-card-editor");
+    return document.createElement("bubble-card-glass-editor");
   }
 
   _notifyEditorContext() {
@@ -214,19 +214,19 @@ class BubbleCard extends HTMLElement {
   }
 }
 
-customElements.define("bubble-card", BubbleCard);
+customElements.define("bubble-card-glass", BubbleCard);
 
 window.customCards = window.customCards || [];
 window.customCards.push({
-  type: "bubble-card",
-  name: "Bubble Card",
+  type: "bubble-card-glass",
+  name: "Bubble Card Glass",
   preview: false,
-  description: "A minimalist card collection with a nice pop-up touch.",
+  description: "A minimalist card collection with glass-morphism styling.",
   documentationURL: "https://github.com/Clooos/Bubble-Card/"
 });
 
 console.info(
-  `%c Bubble Card %c ${version} `,
+  `%c Bubble Card Glass %c ${version} `,
   'background-color: #555;color: #fff;padding: 3px 2px 3px 3px;border-radius: 14px 0 0 14px;font-family: DejaVu Sans,Verdana,Geneva,sans-serif;text-shadow: 0 1px 0 rgba(1, 1, 1, 0.3)',
   'background-color: #506eac;color: #fff;padding: 3px 3px 3px 2px;border-radius: 0 14px 14px 0;font-family: DejaVu Sans,Verdana,Geneva,sans-serif;text-shadow: 0 1px 0 rgba(1, 1, 1, 0.3)'
 );

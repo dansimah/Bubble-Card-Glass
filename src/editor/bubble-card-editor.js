@@ -1777,7 +1777,7 @@ class BubbleCardEditor extends LitElement {
       // Last fallback: locate the preview card through the editor dialog DOM (deep shadow traversal).
       const previewContainer = this._getEditorPreviewContainer();
       if (previewContainer) {
-        const bubbleCardEl = this._deepQuerySelector(previewContainer, 'bubble-card');
+        const bubbleCardEl = this._deepQuerySelector(previewContainer, 'bubble-card-glass');
         const root = bubbleCardEl?.shadowRoot || null;
         if (root) {
           this._previewCardHost = bubbleCardEl;
@@ -2282,7 +2282,7 @@ class BubbleCardEditor extends LitElement {
       const score = this._scoreCardContext(detail);
       if (score <= this._previewCardScore) return;
 
-      const host = detail.context || detail.card?.closest?.('bubble-card') || detail.card?.getRootNode?.()?.host || null;
+      const host = detail.context || detail.card?.closest?.('bubble-card-glass') || detail.card?.getRootNode?.()?.host || null;
       const root = detail.context?.shadowRoot || host?.shadowRoot || detail.card?.getRootNode?.() || null;
       if (!root) return;
 
@@ -2313,5 +2313,5 @@ class BubbleCardEditor extends LitElement {
   }
 }
 
-customElements.define('bubble-card-editor', BubbleCardEditor);
+customElements.define('bubble-card-glass-editor', BubbleCardEditor);
 

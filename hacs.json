@@ -1,7 +1,7 @@
 {
-  "name": "Bubble Card",
+  "name": "Bubble Card Glass",
   "content_in_root": false,
   "render_readme": true,
-  "filename": "bubble-card.js",
+  "filename": "bubble-card-glass.js",
   "homeassistant": "2023.9.0"
 }
