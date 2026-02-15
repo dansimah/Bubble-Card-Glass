@@ -196,6 +196,12 @@ export function createDropdownActions(context, elements = context.elements, enti
                 }
             }
             context.elements.mainContainer.style.overflow = 'visible';
+            // Glass fork: elevate the card above siblings so the dropdown
+            // isn't hidden behind other cards' backdrop-filter stacking contexts
+            if (context.card) {
+                context.card.style.zIndex = '999';
+                context.card.style.position = 'relative';
+            }
         }
     };
 
@@ -290,6 +296,11 @@ export function createDropdownActions(context, elements = context.elements, enti
             }
             if (mainContainer && mainContainer.openDropdowns === 0) {
                 context.elements.mainContainer.style.overflow = '';
+                // Glass fork: reset card elevation
+                if (context.card) {
+                    context.card.style.zIndex = '';
+                    context.card.style.position = '';
+                }
             }
         }
     };

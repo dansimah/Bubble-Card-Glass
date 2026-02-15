@@ -140,6 +140,11 @@ class BubbleCard extends HTMLElement {
       if (!isSelectEntity) throw new Error('"Select menu (from attributes)" missing');
     }
 
+    // Glass fork: default use_accent_color for all entity cards
+    if (workingConfig.entity && workingConfig.use_accent_color === undefined) {
+      workingConfig.use_accent_color = true;
+    }
+
     // Glass fork: default HVAC mode selector sub-button for climate cards
     if (workingConfig.card_type === 'climate' && !workingConfig.sub_button) {
       workingConfig.sub_button = {
