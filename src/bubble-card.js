@@ -145,6 +145,13 @@ class BubbleCard extends HTMLElement {
       workingConfig.use_accent_color = true;
     }
 
+    // Glass fork: default tap_action toggle for climate cards
+    if (workingConfig.card_type === 'climate' && !workingConfig.button_action) {
+      workingConfig.button_action = {
+        tap_action: { action: 'toggle' }
+      };
+    }
+
     // Glass fork: default HVAC mode selector sub-button for climate cards
     if (workingConfig.card_type === 'climate' && !workingConfig.sub_button) {
       workingConfig.sub_button = {
