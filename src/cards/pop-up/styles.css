@@ -139,10 +139,7 @@
     padding: 18px 18px 22px;
     position: sticky;
     top: 0;
-    /* Glass fork: frosted glass header so cards don't bleed through when scrolling */
-    background: linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.05) 100%) !important;
-    -webkit-backdrop-filter: blur(16px) saturate(140%);
-    backdrop-filter: blur(16px) saturate(140%);
+    background: none !important;
     overflow: visible;
 }
 
