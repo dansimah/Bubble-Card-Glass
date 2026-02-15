@@ -10,7 +10,7 @@ mwc-list-item[selected] {
 
 ha-select {
     --mdc-shape-medium: var(--bubble-select-list-border-radius, var(--bubble-border-radius, calc(var(--row-height,56px)/2)));
-    --mdc-theme-surface: var(--bubble-select-list-background-color, var(--bubble-select-main-background-color, var(--bubble-main-background-color, var(--card-background-color, var(--secondary-background-color)))));
+    --mdc-theme-surface: var(--bubble-select-list-background-color, var(--bubble-select-main-background-color, rgba(40, 40, 40, 0.85)));
     --mdc-shape-large: 32px;
     --mdc-shape-small: 64px;
     --mdc-menu-max-width: min-content;
@@ -70,7 +70,10 @@ ha-select {
 .bubble-dropdown-arrow {
     display: flex;
     position: absolute;
-    background: var(--bubble-select-arrow-background-color, var(--bubble-icon-background-color, var(--bubble-secondary-background-color, var(--card-background-color, var(--ha-card-background)))));
+    background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.06) 100%);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
     height: 36px;
     width: 36px;
     pointer-events: none;
