@@ -11,7 +11,7 @@ import { handleCustomStyles } from '../../tools/style-processor.js';
 // Track color change timing per context to optimize Safari transitions
 const colorChangeTimers = new WeakMap();
 
-function applyColorChange(context, newButtonColor, newOpacity, cardType) {
+function applyColorChange(context, newButtonColor, newOpacity, isOn, cardType) {
   const background = context.elements?.background;
   if (!background) return;
   
@@ -21,9 +21,16 @@ function applyColorChange(context, newButtonColor, newOpacity, cardType) {
     || (cardType === 'button' ? context.card : context.popUp);
   if (!target) return;
   
-  // Apply the color change
+  // Apply the background color change
   target.style.setProperty('--bubble-button-background-color', newButtonColor);
   background.style.opacity = newOpacity;
+
+  // Glass fork: update border color to match accent when ON
+  if (isOn) {
+    target.style.borderColor = 'var(--bubble-accent-color, var(--bubble-default-color))';
+  } else {
+    target.style.borderColor = '';
+  }
 }
 
 export function changeButton(context) {
@@ -43,11 +50,11 @@ export function changeButton(context) {
   if (buttonType === 'switch' && isOn) {
     if (requiresAttention) {
       newButtonColor = 'var(--red-color, var(--error-color))';
-      newOpacity = '1';
+      newOpacity = '.5';
     } else {
-      // Glass fork: always use accent color for ON state
+      // Glass fork: always use accent color for ON state (semi-transparent tint)
       newButtonColor = 'var(--bubble-button-accent-color, var(--bubble-accent-color, var(--bubble-default-color)))';
-      newOpacity = '1';
+      newOpacity = '.5';
     }
   } else {
     newButtonColor = 'rgba(0, 0, 0, 0)';
@@ -61,7 +68,7 @@ export function changeButton(context) {
 
   // Only update if color or opacity changed
   if (currentButtonColor !== newButtonColor || currentOpacity !== newOpacity) {
-    applyColorChange(context, newButtonColor, newOpacity, cardType);
+    applyColorChange(context, newButtonColor, newOpacity, isOn, cardType);
   }
 }
 
