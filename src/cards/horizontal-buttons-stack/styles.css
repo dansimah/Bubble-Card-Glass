@@ -48,10 +48,10 @@ ha-card {
 
 .card-content {
     width: calc(100% + 36px);
-    padding: 0 !important;
+    padding: 8px 0 !important;
     max-width: calc(var(--desktop-width) - 8px);
     box-sizing: border-box;
-    overflow: scroll;
+    overflow: visible;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -97,6 +97,11 @@ ha-card {
     height: 51px;
     position: relative;
     margin: auto;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 28px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+    box-sizing: border-box;
 }
 
 .bubble-button {
