@@ -174,7 +174,7 @@ ha-card {
     min-height: 38px;
     margin: 6px;
     border-radius: var(--bubble-card-type-icon-border-radius, var(--bubble-icon-border-radius, var(--bubble-border-radius, 50%)));
-    background-color: var(--bubble-card-type-icon-background-color, var(--bubble-icon-background-color, transparent));
+    background-color: transparent;
     overflow: hidden;
     position: relative;
 }

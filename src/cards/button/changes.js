@@ -3,11 +3,8 @@ import {
   getState,
   isStateOn,
   isStateRequiringAttention,
-  isEntityType,
   setLayout,
-  getStateSurfaceColor
 } from '../../tools/utils.js';
-import { getIconColor } from '../../tools/icon.js';
 import { updateSlider } from '../../components/slider/changes.js';
 import { handleCustomStyles } from '../../tools/style-processor.js';
 
@@ -18,7 +15,10 @@ function applyColorChange(context, newButtonColor, newOpacity, cardType) {
   const background = context.elements?.background;
   if (!background) return;
   
-  const target = cardType === 'button' ? context.card : context.popUp;
+  // Glass fork: set on mainContainer so --bubble-accent-color resolves
+  // in the same scope where user YAML styles define it
+  const target = context.elements?.mainContainer
+    || (cardType === 'button' ? context.card : context.popUp);
   if (!target) return;
   
   // Apply the color change
@@ -29,29 +29,23 @@ function applyColorChange(context, newButtonColor, newOpacity, cardType) {
 export function changeButton(context) {
   const cardType = context.config.card_type;
   const buttonType = getButtonType(context);
-  const isLight = isEntityType(context, "light");
   const isOn = isStateOn(context);
   const requiresAttention = isStateRequiringAttention(context);
-  const lightColor = getIconColor(context);
 
-  const currentButtonColor = cardType === 'button'
-      ? context.card.style.getPropertyValue('--bubble-button-background-color')
-      : context.popUp.style.getPropertyValue('--bubble-button-background-color');
+  const colorTarget = context.elements?.mainContainer
+      || (cardType === 'button' ? context.card : context.popUp);
+  const currentButtonColor = colorTarget?.style.getPropertyValue('--bubble-button-background-color') ?? '';
   const currentOpacity = context.elements.background?.style.opacity;
 
   let newButtonColor = '';
   let newOpacity = '';
 
-  const useAccentColor = context.config.use_accent_color;
-
   if (buttonType === 'switch' && isOn) {
     if (requiresAttention) {
       newButtonColor = 'var(--red-color, var(--error-color))';
       newOpacity = '1';
-    } else if (lightColor && isLight && !useAccentColor) {
-      newButtonColor = getStateSurfaceColor(context, context.config.entity, true, null, null);
-      newOpacity = '.7';
     } else {
+      // Glass fork: always use accent color for ON state
       newButtonColor = 'var(--bubble-button-accent-color, var(--bubble-accent-color, var(--bubble-default-color)))';
       newOpacity = '1';
     }

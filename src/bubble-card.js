@@ -140,6 +140,19 @@ class BubbleCard extends HTMLElement {
       if (!isSelectEntity) throw new Error('"Select menu (from attributes)" missing');
     }
 
+    // Glass fork: default HVAC mode selector sub-button for climate cards
+    if (workingConfig.card_type === 'climate' && !workingConfig.sub_button) {
+      workingConfig.sub_button = {
+        main: [{
+          name: 'HVAC modes menu',
+          select_attribute: 'hvac_modes',
+          state_background: true,
+          show_arrow: false,
+          sub_button_type: 'select'
+        }]
+      };
+    }
+
     this.config = workingConfig;
   }
 
